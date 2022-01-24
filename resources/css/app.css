@@ -1,3 +1,108 @@
-.list-item{
-    color: blue;
+body{
+    top: 0px;
 }
+#app nav{
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+    color: white;
+}
+button.btn:active, button.btn:focus{
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+.botao-lista{
+    font-size: 25px;
+    border-radius: 50%;
+    padding: 10px;
+}
+.botao-add{
+    border-radius: 50px;
+}
+.botao-lista.btn-temporada{
+    background-color: #9ea0bb96;
+}
+.botao-lista.btn-temporada:hover{
+    background-color:#9ea0bb;
+}
+.botao-lista.btn-edit{
+    background-color: #93b6d9e0;
+}
+.botao-lista.btn-edit:hover{
+    background-color: #3d6c9b;
+}
+.botao-lista.btn-delete{
+    background-color: #d70808;
+}
+.botao-lista.btn-delete:hover{
+    background-color: #b12727;
+}
+.botao-lista:hover{
+    color: white;
+}
+.fluid-banner{
+    background-image: url('../images/bg-body.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    box-shadow: inset 0px 0px 100px 139px rgb(0 0 0 / 93%);
+    -webkit-box-shadow: inset 0px 0px 100px 139px rgb(0 0 0 / 93%);
+    display: flex;
+    align-items: flex-end;
+    height: 400px;
+}
+.fluid-banner h1{
+    font-weight: 500;
+    font-size: 70px;
+    font-family: fantasy;
+}
+.container-fluid-conteudo{
+    box-shadow: inset 0px 0px 100px 139px rgb(0 0 0 / 93%);
+    -webkit-box-shadow: inset 0px 0px 100px 139px rgb(0 0 0 / 93%);
+    background-color: #3e0000;
+    height: auto;
+    background-color: #3e0000;
+    padding-bottom: 30px;
+    padding-top: 10px;
+    min-height: 600px;
+}
+.container-fluid-conteudo .container-conteudo{
+    color: white;
+    padding-top: 50px;
+}
+.container-fluid-conteudo .container-conteudo .table, .container-fluid-conteudo .container-conteudo ul.list-group{
+    z-index: 10;
+    background-color: #00000075;
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+    box-shadow: 0px 0px 16px 10px rgb(0 0 0 / 59%);
+    -webkit-box-shadow: 0px 0px 100px 35px rgb(0 0 0 / 59%);
+    font-size: 20px;
+    color: white;
+    border-radius: 15px;
+}
+.container-fluid-conteudo .container-conteudo .table td, .container-fluid-conteudo .container-conteudo ul.list-group li{
+    vertical-align: middle;
+    background-color: transparent;
+    color: white;
+}
+.btn-grad {
+    background-image: linear-gradient(to right, #a70000 0%, #000 62%, #a70000 100%);
+}
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.652);
+   border: none;
+ }
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+

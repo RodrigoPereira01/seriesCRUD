@@ -19,9 +19,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm text-white">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('series') }}">
+                <a class="navbar-brand text-white" href="{{ route('series') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -73,10 +73,12 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            <div class="container-fluid bg-light">
-                <div class="container bg-dark text-white py-5 mb-4">
-                    <h1 class="display-4">@yield('titulo-jumbotron')</h1>
+        <main class="">
+            <div class="container-fluid fluid-banner">
+                <div class="container text-white py-5 mb-4">
+                    <h1 class="display-4">
+                        @yield('titulo-jumbotron')
+                    </h1>
                 </div>
             </div>
             
