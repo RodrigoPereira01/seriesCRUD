@@ -21,5 +21,4 @@ class Temporada extends Model
     {
         return $this->belongsTo(Serie::class);
     }
-
 }

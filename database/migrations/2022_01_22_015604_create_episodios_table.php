@@ -14,16 +14,15 @@ class CreateEpisodiosTable extends Migration
     public function up()
     {
         Schema::create('episodios', function (Blueprint $table) {
-            $table->id();
-            $table->integer('numero');
-            $table->unsignedBigInteger('temporada_id');
-            $table->foreign('temporada_id')
+        $table->bigIncrements('id');
+        $table->integer('numero');
+        $table->unsignedBigInteger('temporada_id');
+
+        $table->foreign('temporada_id')
             ->references('id')
             ->on('temporadas');
-
         });
 
-    
     }
 
     /**

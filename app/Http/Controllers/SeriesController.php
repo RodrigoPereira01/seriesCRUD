@@ -4,9 +4,11 @@
 
     use App\Http\Requests\SeriesFormRequest;
     use Illuminate\Http\Request;
-    use App\Models\Serie;
+    use App\Models\{Serie, Temporada, Episodios};
+    use App\Services\CriadorDeSerie;
+    use App\Services\RemovedorDeSerie;
 
-    class SeriesController extends Controller
+class SeriesController extends Controller
     {
         public function index(Request $request) {
             $series = Serie::query()
@@ -22,42 +24,52 @@
             return view('series.criar');
         }
         
-        public function store(SeriesFormRequest $request)
+        public function store(SeriesFormRequest $request, CriadorDeSerie $criadorDeSerie)
         {
-            $nome = $request->nome;
 
-            $serie = serie::create(['nome' => $request->nome]);
-            $qtdTemporadas = $request->qtd_temporadas;
-            for($i = 1; $i <= $qtdTemporadas; $i++){
-                $temporada = $serie->temporadas()->create(['numero' => $i]);
-
-                for ($j = 1; $j <= $request->ep_por_temporada; $j++) {
-                    $episodio = $temporada->episodios()->create(['numero' => $j]);
-                }
-            }
-
-
-
-            $request->session()
-            ->flash(
-                'mensagem',
-                "Série {$serie->nome} cadastrada com sucesso!"
+            // dd($request->qtd_temporadas);
+            $serie = $criadorDeSerie
+            ->CriarSerie(
+                $request->nome, 
+                $request->qtd_temporadas, 
+                $request->ep_por_temporada
             );
+
+            
                 
-            return redirect('series');
+                $request->session()
+                ->flash(
+                    'mensagem',
+                    "Série {$serie->nome} cadastrada com sucesso!"
+                );
+                    
+                return redirect('series');
+           
         }
 
         
-        public function destroy(Request $request) 
-        {
-            Serie::destroy($request->id);
-            $request->session()
-            ->flash(
-                'mensagem',
-                "Série {$request->nome} removida com sucesso!"
-            );
+        public function destroy(
+            Request $request,
+            RemovedorDeSerie $removedorDeSerie) {
+            try {
+                $serie = Serie::where('id', $request->id)->first();
+                if (empty($serie)) {
+
+                    return redirect()->route('series')->with('status', 'Série não encontrada!');
+                }
+            
+                $serie = $removedorDeSerie->removerSerie($request->id);
+
+                $request->session()->flash(
+                    'mensagem',
+                    "Série {$request->nome} removida com sucesso!"
+                );
+            } catch (\Throwable $th) {
+                throw $th;
+            }
                 
             return redirect('series');
         }
     }
+
 ?>
